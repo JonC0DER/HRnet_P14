@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  --glight:#E5F1D3;
+  --gmiddle:#A9C98E;
+  --ghard:#4F6D4F;
+  --disabled: rgb(127, 135, 129);
+  --disabled-txt: rgb(199, 199, 199);
+}
+
+header {
+  height: 100px;
+  background-color: var(--gmiddle);
+}
+header .title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+header .title h1 {
+  font-size: 80px;
+}
+
+.container {
+  height: 70vh;
+}
+
+.container, form, fieldset {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form > button {
+  border: none;
+  width: 80px;
+  height: 35px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 5px gray;
+          box-shadow: 0px 0px 5px gray;
+  background-color: var(--ghard);
+  color: var(--glight);
+  font-size: 20px;
+  font-weight: bold;
+}
+form > button:disabled {
+  background-color: var(--disabled);
+  color: var(--disabled-txt);
+}
