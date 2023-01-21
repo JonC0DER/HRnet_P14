@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react'
 
-const getStorageValue = (value, defaultValue) => {
+export const getStorageValue = (value, defaultValue) => {
     const getValue = localStorage.getItem(value)
     const parseValue = JSON.parse(getValue)
     return parseValue || defaultValue
+}
+
+export const useCreateStoreData = (item, value) => {
+    try {
+        useEffect(() => {
+            localStorage.setItem(item, JSON.stringify(value))
+        }, [item, value])
+    } catch (error) {
+        console.log('Failed to store data with localStorage.setItem ', error)
+        return false
+    }
+    return true
 }
 
 export const useLocalStorage = (value, defaultValue) => {
