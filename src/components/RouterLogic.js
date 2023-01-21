@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import NewEmployeeContainer from "./NewEmployeeContainer"
+import Home from '../pages/Home'
+import ListEmployees from "../pages/ListEmployees"
 
 export const RouterLogic = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<NewEmployeeContainer />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/employee-list" element={<ListEmployees />} />
             </Routes>
         </BrowserRouter>
     )
