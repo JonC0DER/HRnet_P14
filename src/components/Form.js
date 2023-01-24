@@ -37,7 +37,7 @@ const Form = () => {
         countryState, birthStorage, startStorage,
         department
     ]
-    // console.log(formEntries)
+
     const canSave = formEntries.every(Boolean)
 
     const onSubmit = e => {
