@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import DatePicker from "../lib/datepicker.js/DatePicker"
+import DatePicker from "../lib/datepicker/DatePicker"
 import states from "../assets/datas/states"
 import DropdownMenu from "../lib/dropdown_menu/DropdownMenu"
 import { useDispatch, useSelector } from "react-redux"
