@@ -83,60 +83,78 @@ const Form = () => {
                 : <>
                     <h2>Create Employee</h2>
                     <form action="" id="create-employee">
-                        <label htmlFor="first-name">First Name</label>
-                        <input type="text" id="first-name" value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            pattern="[a-zA-Z]{4,9}" required
-                            title={invalidAlphabetic}
-                        />
-                        <label htmlFor="last-name">Last Name</label>
-                        <input type="text" id="last-name" value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            pattern="[a-zA-Z]{4,9}" required
-                            title={invalidAlphabetic}
-                        />
-                        <label htmlFor={birthDateId}>Date of Birth: </label>
-                        <DatePicker
-                            onChange={(e) => setBirthStorage(e.target.value)}
-                            elemId={birthDateId}
-                        />
-                        <label htmlFor={startDateId}>Start Date</label>
-                        <DatePicker
-                            onChange={(e) => setStartStorage(e.target.value)}
-                            elemId={startDateId}
-                        />
+                        <div className="first-name">
+                            <label htmlFor="first-name">First Name</label>
+                            <input type="text" id="first-name" value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                pattern="[a-zA-Z]{4,9}" required
+                                title={invalidAlphabetic}
+                            />
+                        </div>
+                        <div className="last-name">
+                            <label htmlFor="last-name">Last Name</label>
+                            <input type="text" id="last-name" value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                pattern="[a-zA-Z]{4,9}" required
+                                title={invalidAlphabetic}
+                            />
+                        </div>
+                        <div className="birth-date">
+                            <label htmlFor={birthDateId}>Date of Birth: </label>
+                            <DatePicker
+                                onChange={(e) => setBirthStorage(e.target.value)}
+                                elemId={birthDateId}
+                            />
+                        </div>
+                        <div className="start-date">
+                            <label htmlFor={startDateId}>Start Date</label>
+                            <DatePicker
+                                onChange={(e) => setStartStorage(e.target.value)}
+                                elemId={startDateId}
+                            />
+                        </div>
                         <fieldset className="address">
                             <legend>Address</legend>
-                            <label htmlFor="street">Street</label>
-                            <input id="street" type="text" value={street}
-                                onChange={(e) => setStreet(e.target.value)}
-                                pattern="[a-zA-Z]{4,9}" required
-                                title={invalidAlphabetic}
-                            />
-                            <label htmlFor="city">City</label>
-                            <input id="city" type="text" value={city}
-                                onChange={(e) => setCity(e.target.value)}
-                                pattern="[a-zA-Z]{4,9}" required
-                                title={invalidAlphabetic}
-                            />
-                            <label htmlFor="state">State {countryState}</label>
-                            <select name="state" id="state"
-                                onChange={(e) => setCountryState(e.target.value)}
-                            >
-                                <DropdownMenu datas={states} />
-                            </select>
-                            <label htmlFor="zip-code">Zip Code</label>
-                            <input id="zip-code" type="number" value={zip}
-                                onChange={(e) => setZip(e.target.value)}
-                            />
+                            <div className="street">
+                                <label htmlFor="street">Street</label>
+                                <input id="street" type="text" value={street}
+                                    onChange={(e) => setStreet(e.target.value)}
+                                    pattern="[a-zA-Z]{4,9}" required
+                                    title={invalidAlphabetic}
+                                />
+                            </div>
+                            <div className="city">
+                                <label htmlFor="city">City</label>
+                                <input id="city" type="text" value={city}
+                                    onChange={(e) => setCity(e.target.value)}
+                                    pattern="[a-zA-Z]{4,9}" required
+                                    title={invalidAlphabetic}
+                                />
+                            </div>
+                            <div className="state">
+                                <label htmlFor="state">State {countryState}</label>
+                                <select name="state" id="state"
+                                    onChange={(e) => setCountryState(e.target.value)}
+                                >
+                                    <DropdownMenu datas={states} />
+                                </select>
+                            </div>
+                            <div className="zip-code">
+                                <label htmlFor="zip-code">Zip Code</label>
+                                <input id="zip-code" type="number" value={zip}
+                                    onChange={(e) => setZip(e.target.value)}
+                                />
+                            </div>
                         </fieldset>
-                        <label htmlFor="department">Department</label>
-                        <select name="department" id="department"
-                            onChange={(e) => setDepartment(e.target.value)}
-                        >
-                            <option value=""></option>
-                            {departments.map((dep, id) => <option key={id} value={dep}>{dep}</option>)}
-                        </select>
+                        <div className="department">
+                            <label htmlFor="department">Department</label>
+                            <select name="department" id="department"
+                                onChange={(e) => setDepartment(e.target.value)}
+                            >
+                                <option value=""></option>
+                                {departments.map((dep, id) => <option key={id} value={dep}>{dep}</option>)}
+                            </select>
+                        </div>
                         <button type="submit"
                             onClick={onSubmit}
                             disabled={!canSave}
