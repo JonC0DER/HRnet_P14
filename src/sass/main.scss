@@ -4,6 +4,11 @@
     box-sizing:border-box;
 }
 
+a {
+    text-decoration: none;
+    color: var(--gmiddle);
+}
+
 :root{
     --glight:#E5F1D3;
     --gmiddle:#A9C98E;
@@ -15,17 +20,38 @@
 header{
     height: 100px;
     background-color: var(--gmiddle);
+    margin-bottom: 15px;
     .title{
         width: fit-content;
         margin: auto;
         h1{
+            color: var(--ghard);
             font-size: 80px;
+            text-shadow: 2px 2px 5px black inset;
         }
     }
 }
 
+div.back-home{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+section.data-table > h1{
+    font-size: 30px;   
+    color: var(--ghard);
+    text-shadow: 2px 2px 0px var(--gmiddle);
+}
+
 .container{
     height: 70vh;
+    h2{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        color: var(--ghard);
+        text-shadow: 1px 1px 0px var(--gmiddle);
+    }
 }
 
 .container, form, fieldset{
@@ -36,19 +62,56 @@ header{
     align-items: center;
 }
 
-form > button {
-    border: none;
-    width: 80px;
-    height: 35px;
-    border-radius: 3px;
-    box-shadow: 0px 0px 5px gray;
-    background-color: var(--ghard);
-    color: var(--glight);
-    font-size: 20px;
-    font-weight: bold;
-    &:disabled{
-        background-color: var(--disabled);
-        color: var(--disabled-txt)
+form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:grey; 
+    & div {
+        label{
+            margin-bottom: 8px;;
+        }
+        input {
+            height: 25px;
+            border: 1px solid lightgray;
+            width: 250px;
+        }
+    
+        display: flex;
+        flex-direction: column;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+    & > fieldset {
+        padding: 8px 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border: lightgray solid 1px;
+    }
+    
+    select{
+        height: 50px;
+        width: 100%;
+        border:1px solid lightgray;
+        background-color:var(--glight);
+    }
+
+    button {
+        margin-top: 20px;
+        border: none;
+        width: 80px;
+        height: 35px;
+        border-radius: 3px;
+        box-shadow: 0px 0px 5px gray;
+        background-color: var(--ghard);
+        color: var(--glight);
+        font-size: 20px;
+        font-weight: bold;
+        &:disabled{
+            background-color: var(--disabled);
+            color: var(--disabled-txt)
+        }
     }
 }
 

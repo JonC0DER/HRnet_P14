@@ -5,6 +5,11 @@
           box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: var(--gmiddle);
+}
+
 :root {
   --glight:#E5F1D3;
   --gmiddle:#A9C98E;
@@ -16,6 +21,7 @@
 header {
   height: 100px;
   background-color: var(--gmiddle);
+  margin-bottom: 15px;
 }
 header .title {
   width: -webkit-fit-content;
@@ -24,11 +30,31 @@ header .title {
   margin: auto;
 }
 header .title h1 {
+  color: var(--ghard);
   font-size: 80px;
+  text-shadow: 2px 2px 5px black inset;
+}
+
+div.back-home {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+section.data-table > h1 {
+  font-size: 30px;
+  color: var(--ghard);
+  text-shadow: 2px 2px 0px var(--gmiddle);
 }
 
 .container {
   height: 70vh;
+}
+.container h2 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: var(--ghard);
+  text-shadow: 1px 1px 0px var(--gmiddle);
 }
 
 .container, form, fieldset {
@@ -48,7 +74,53 @@ header .title h1 {
           align-items: center;
 }
 
-form > button {
+form {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: grey;
+}
+form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 50px;
+  margin-bottom: 15px;
+}
+form div label {
+  margin-bottom: 8px;
+}
+form div input {
+  height: 25px;
+  border: 1px solid lightgray;
+  width: 250px;
+}
+form > fieldset {
+  padding: 8px 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: lightgray solid 1px;
+}
+form select {
+  height: 50px;
+  width: 100%;
+  border: 1px solid lightgray;
+  background-color: var(--glight);
+}
+form button {
+  margin-top: 20px;
   border: none;
   width: 80px;
   height: 35px;
@@ -60,7 +132,7 @@ form > button {
   font-size: 20px;
   font-weight: bold;
 }
-form > button:disabled {
+form button:disabled {
   background-color: var(--disabled);
   color: var(--disabled-txt);
 }
