@@ -1,10 +1,11 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import DatePicker from "../lib/datepicker.js/DatePicker"
 import states from "../assets/datas/states"
 import DropdownMenu from "../lib/dropdown_menu/DropdownMenu"
 import { useDispatch, useSelector } from "react-redux"
-import { getSavingState, savingEmployee, setStateEmployee } from "../redux/reducer"
+import { getModaleMsg, getSavingState, savingEmployee, setStateEmployee } from "../redux/reducer"
 import { SaveEmployee } from "../features/saveEmployee"
+import { Modale } from "../lib/modale/Modale"
 
 const Form = () => {
     const departments = [
@@ -21,6 +22,8 @@ const Form = () => {
     const dispatch = useDispatch()
 
     const isSaving = useSelector(getSavingState)
+    const modaleMsg = useSelector(getModaleMsg)
+    //console.log(modaleMsg)
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -71,6 +74,8 @@ const Form = () => {
         }
     }
 
+    const invalidAlphabetic = "setCustomValidity('Caractères alphabetique uniquement, entre 4 et 9 lettres')"
+
     return (
         <>
             {isSaving
@@ -81,10 +86,14 @@ const Form = () => {
                         <label htmlFor="first-name">First Name</label>
                         <input type="text" id="first-name" value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
+                            pattern="[a-zA-Z]{4,9}" required
+                            title={invalidAlphabetic}
                         />
                         <label htmlFor="last-name">Last Name</label>
                         <input type="text" id="last-name" value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
+                            pattern="[a-zA-Z]{4,9}" required
+                            title={invalidAlphabetic}
                         />
                         <label htmlFor={birthDateId}>Date of Birth: </label>
                         <DatePicker
@@ -101,10 +110,14 @@ const Form = () => {
                             <label htmlFor="street">Street</label>
                             <input id="street" type="text" value={street}
                                 onChange={(e) => setStreet(e.target.value)}
+                                pattern="[a-zA-Z]{4,9}" required
+                                title={invalidAlphabetic}
                             />
                             <label htmlFor="city">City</label>
                             <input id="city" type="text" value={city}
                                 onChange={(e) => setCity(e.target.value)}
+                                pattern="[a-zA-Z]{4,9}" required
+                                title={invalidAlphabetic}
                             />
                             <label htmlFor="state">State {countryState}</label>
                             <select name="state" id="state"
@@ -129,6 +142,7 @@ const Form = () => {
                             disabled={!canSave}
                         >Save</button>
                     </form>
+                    {modaleMsg ? <Modale msg={modaleMsg} outBool={isSaving} /> : null}
                 </>
             }
         </>
