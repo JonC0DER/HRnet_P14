@@ -1,0 +1,49 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
+    },
+    "source": {
+        "include": [
+            "src"
+        ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [
+        "plugins/markdown",
+        "jsdoc-mermaid",
+        "better-docs/component"
+    ],
+    "opts": {
+        "encoding": "utf8",
+        "destination": "docs/",
+        "readme": "README.md",
+        "recurse": true,
+        "verbose": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "search": true,
+        "better-docs": {
+            "name": "HRnet",
+            "title": "HR-net docs",
+            "css": "style.css",
+            "hideGenerator": false,
+            "navLinks": [
+                {
+                    "label": "Github",
+                    "href": "https://github.com/SoftwareBrothers/admin-bro"
+                },
+                {
+                    "label": "Example Application",
+                    "href": "https://admin-bro-example-app-staging.herokuapp.com/admin"
+                }
+            ]
+        }
+    }
+}
