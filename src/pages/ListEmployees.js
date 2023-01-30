@@ -23,12 +23,17 @@ const ListEmployees = () => {
 
     return (
         <>
+            <div className="back-home">
+                <NavLink to='/'>Home</NavLink>
+            </div>
             <DataTable
                 thData={theadData}
                 tdData={chooseData}
                 dataTitle={h1Title}
             />
-            <NavLink to='/'>Home</NavLink>
+            <div className="back-home">
+                <NavLink to='/'>Home</NavLink>
+            </div>
         </>
     )
 }
