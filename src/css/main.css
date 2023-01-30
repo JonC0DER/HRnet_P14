@@ -64,3 +64,141 @@ form > button:disabled {
   background-color: var(--disabled);
   color: var(--disabled-txt);
 }
+
+.modale-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.641);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.modale-content.out {
+  position: relative;
+  background-color: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.modale-content > .modale {
+  position: relative;
+  background-color: var(--glight);
+  min-width: 200px;
+  max-width: 400px;
+  min-height: 75px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 5px rgb(0, 0, 0);
+          box-shadow: 0px 0px 5px rgb(0, 0, 0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.modale-content > .modale > .close {
+  position: absolute;
+  -webkit-transform: translate(100px, -40px);
+          transform: translate(100px, -40px);
+  padding: 5px 8px;
+  border-radius: 50%;
+  background-color: var(--ghard);
+  color: var(--glight);
+  font-size: 20px;
+}
+.modale-content > .modale > .close:hover {
+  cursor: pointer;
+}
+.modale-content > .modale > .msg {
+  padding: 15px 30px 15px 30px;
+  text-align: center;
+}
+
+.init-pos-y {
+  -webkit-transform: translate(0px, -999px);
+          transform: translate(0px, -999px);
+}
+
+.last-pos-y {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.animate-modale {
+  -webkit-animation-name: modalemove;
+          animation-name: modalemove;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+}
+
+.animate-reverse {
+  -webkit-animation-name: modalup;
+          animation-name: modalup;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+}
+
+@-webkit-keyframes modalemove {
+  0% {
+    -webkit-transform: translate(0px, -999px);
+            transform: translate(0px, -999px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes modalemove {
+  0% {
+    -webkit-transform: translate(0px, -999px);
+            transform: translate(0px, -999px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes modalup {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(0px, -999px);
+            transform: translate(0px, -999px);
+    opacity: 0;
+  }
+}
+@keyframes modalup {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(0px, -999px);
+            transform: translate(0px, -999px);
+    opacity: 0;
+  }
+}
