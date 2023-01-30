@@ -1,8 +1,9 @@
+import React from "react"
 import { NavLink } from "react-router-dom"
-import DataTable from "../lib/datatable/DataTable"
 import theadData from '../assets/datas/th-titles'
 import Employees from '../assets/datas/Employees.json'
 import { getStorageValue } from "../lib/uselocalstorage/useLocalStorage"
+import DataTable from "sheetsort-table/dist/datatable/DataTable"
 
 const ListEmployees = () => {
     const employeesData = Employees
