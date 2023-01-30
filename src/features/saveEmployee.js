@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getStorageValue, useCreateStoreData } from "../lib/uselocalstorage/useLocalStorage"
 import { employeeToSave, msgToModale, savingEmployee } from "../redux/reducer"
@@ -13,15 +14,26 @@ import { employeeToSave, msgToModale, savingEmployee } from "../redux/reducer"
  * @returns {state} boolean state to dispatch
  */
 export const SaveEmployee = () => {
-    const item = "employee"
-    const items = "employees"
 
     const dispatch = useDispatch()
 
     const employee = useSelector(employeeToSave)
 
-    const retreiveDataEmployees = getStorageValue(item, null)
+    const items = "employees"
+    const retreiveDataEmployees = getStorageValue(items, null)
     const isRetreiveAnArray = Array.isArray(retreiveDataEmployees)
+
+    const cleanEmployee = (setEmployee) => {
+        const keys = ['saving', 'status', 'modaleMsg']
+        const newEmployee = {}
+        Object.keys(setEmployee).forEach((key) => {
+            if (!keys.includes(key)) {
+                newEmployee[key] = setEmployee[key]
+            }
+        })
+
+        return newEmployee
+    }
 
     /**
      * You have to be sure that the data
@@ -37,7 +49,7 @@ export const SaveEmployee = () => {
             }
             return uniq
         }, {})
-        return uniqObjArray
+        return Object.values(uniqObjArray)
     }
 
     /**
@@ -64,39 +76,37 @@ export const SaveEmployee = () => {
         const oldData = arrayFormatData()
         const isDefine = oldData !== undefined
         const newArray = isDefine ? oldData : []
-        newArray.push(employee)
+        const newEmployee = cleanEmployee(employee)
+        newArray.push(newEmployee)
         return uniqObj(newArray)
     }
 
     const createData = useCreateStoreData(items, prepareData())
-    console.log('isRetreiveData : ', prepareData())
+    //console.log('isRetreiveData : ', prepareData())
 
-    const returnToRegisterWithMsg = (bool, msg, errorMsg) => {
+    const returnToRegisterWithMsg = useCallback((bool, msg, errorMsg) => {
         try {
             dispatch(savingEmployee(bool))
             dispatch(msgToModale(msg))
         } catch (error) {
             console.log(errorMsg, error)
         }
-    }
+    }, [dispatch])
 
-    const isDataStored = () => {
-        if (createData) {
-            const msg = 'Successfuly created Employee !'
-            const errorMsg = 'Failed Saving Employee to localStorage'
-            returnToRegisterWithMsg(false, msg, errorMsg)
-        } else {
-            const msg = ''
-            const errorMsg = 'Failed to create Employee & to send msg to modale'
-            returnToRegisterWithMsg(false, msg, errorMsg)
+    useEffect(() => {
+        const isDataStored = () => {
+            if (createData) {
+                const msg = 'Successfuly created Employee !'
+                const errorMsg = 'Failed Saving Employee to localStorage'
+                returnToRegisterWithMsg(false, msg, errorMsg)
+            } else {
+                const msg = ''
+                const errorMsg = 'Failed to create Employee & to send msg to modale'
+                returnToRegisterWithMsg(false, msg, errorMsg)
+            }
         }
-    }
 
-    return (
-        <>
-            <div>{isDataStored()}
-                <h1>Wait for Saving ...</h1>
-            </div>
-        </>
-    )
+        isDataStored()
+    }, [createData, returnToRegisterWithMsg])
+
 }
